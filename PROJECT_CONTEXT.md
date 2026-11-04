@@ -66,100 +66,99 @@
 
 ---
 
-## 3. STRUKTUR FOLDER
+## 2. Struktur Folder Proyek
+
+```
 smart-farming-iot/
 ├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ │ ├── ProtectedRoute.jsx
-│ │ │ ├── PublicOnlyRoute.jsx
-│ │ │ ├── Toast.jsx
-│ │ │ ├── ConfirmModal.jsx
-│ │ │ └── SensorChart.jsx
-│ │ ├── context/
-│ │ │ └── AuthContext.jsx # JWT + socket connect
-│ │ ├── hooks/
-│ │ │ └── useDeviceSocket.js # subscribe event socket
-│ │ ├── layouts/
-│ │ │ └── DashboardLayout.jsx # sidebar + hamburger mobile
-│ │ ├── pages/
-│ │ │ ├── Login.jsx
-│ │ │ ├── Register.jsx
-│ │ │ ├── Dashboard.jsx
-│ │ │ ├── MyDevices.jsx
-│ │ │ ├── AddDevice.jsx
-│ │ │ ├── DeviceDetail.jsx
-│ │ │ ├── Monitoring.jsx
-│ │ │ ├── History.jsx
-│ │ │ ├── Irrigation.jsx
-│ │ │ ├── Settings.jsx
-│ │ │ └── Profile.jsx
-│ │ ├── services/
-│ │ │ ├── api.js # axios instance + interceptors
-│ │ │ ├── authService.js
-│ │ │ ├── deviceService.js
-│ │ │ ├── monitoringService.js
-│ │ │ ├── userService.js
-│ │ │ └── socket.js # connectSocket(token)
-│ │ ├── App.jsx
-│ │ ├── main.jsx
-│ │ └── index.css # Tailwind + custom classes
-│ ├── .env.example
-│ ├── tailwind.config.js
-│ └── package.json
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ProtectedRoute.jsx
+│   │   │   ├── PublicOnlyRoute.jsx
+│   │   │   ├── Toast.jsx
+│   │   │   ├── ConfirmModal.jsx
+│   │   │   └── SensorChart.jsx
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx         # JWT + socket connect
+│   │   ├── hooks/
+│   │   │   └── useDeviceSocket.js      # subscribe event socket
+│   │   ├── layouts/
+│   │   │   └── DashboardLayout.jsx     # sidebar + hamburger mobile
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── MyDevices.jsx
+│   │   │   ├── AddDevice.jsx
+│   │   │   ├── DeviceDetail.jsx
+│   │   │   ├── Monitoring.jsx
+│   │   │   ├── History.jsx
+│   │   │   ├── Irrigation.jsx
+│   │   │   ├── Settings.jsx
+│   │   │   └── Profile.jsx
+│   │   ├── services/
+│   │   │   ├── api.js                  # axios instance + interceptors
+│   │   │   ├── authService.js
+│   │   │   ├── deviceService.js
+│   │   │   ├── monitoringService.js
+│   │   │   ├── userService.js
+│   │   │   └── socket.js               # connectSocket(token)
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css                   # Tailwind + custom classes
+│   ├── .env.example
+│   ├── tailwind.config.js
+│   └── package.json
 │
 ├── backend/
-│ ├── config/
-│ │ └── database.js # mysql2 pool
-│ ├── controllers/
-│ │ ├── authController.js # register/login/me/profile/password
-│ │ ├── deviceController.js # CRUD + settings
-│ │ ├── deviceApiController.js # telemetry/poll/ack (ESP32)
-│ │ ├── monitoringController.js # history + dashboard summary
-│ │ └── pumpController.js # control pump + latest command
-│ ├── middleware/
-│ │ ├── auth.js # JWT user
-│ │ ├── deviceAuth.js # X-Device-UID + X-Device-Token
-│ │ ├── rateLimiter.js # auth rate limit
-│ │ └── commandRateLimit.js # 10 detik per device
-│ ├── routes/
-│ │ ├── authRoutes.js
-│ │ ├── deviceRoutes.js
-│ │ ├── deviceApiRoutes.js # ESP32 endpoints
-│ │ ├── dashboardRoutes.js
-│ │ └── index.js
-│ ├── services/
-│ │ ├── devicePresence.js # mark offline tiap 20s
-│ │ └── commandExpiry.js # expire PENDING > 5 menit
-│ ├── sockets/
-│ │ └── index.js # Socket.IO + auth + room per user
-│ ├── utils/
-│ │ ├── jwt.js
-│ │ ├── response.js # ok/created/fail helper
-│ │ ├── tokens.js # generateDeviceUid/Token
-│ │ └── validators.js
-│ ├── scripts/
-│ │ └── seedReadings.js # seeder data testing
-│ ├── .env.example
-│ ├── server.js
-│ └── package.json
+│   ├── config/
+│   │   └── database.js                 # mysql2 pool
+│   ├── controllers/
+│   │   ├── authController.js           # register/login/me/profile/password
+│   │   ├── deviceController.js         # CRUD + settings
+│   │   ├── deviceApiController.js      # telemetry/poll/ack (ESP32)
+│   │   ├── monitoringController.js     # history + dashboard summary
+│   │   └── pumpController.js           # control pump + latest command
+│   ├── middleware/
+│   │   ├── auth.js                     # JWT user
+│   │   ├── deviceAuth.js               # X-Device-UID + X-Device-Token
+│   │   ├── rateLimiter.js              # auth rate limit
+│   │   └── commandRateLimit.js         # 10 detik per device
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── deviceRoutes.js
+│   │   ├── deviceApiRoutes.js          # ESP32 endpoints
+│   │   ├── dashboardRoutes.js
+│   │   └── index.js
+│   ├── services/
+│   │   ├── devicePresence.js           # mark offline tiap 20s
+│   │   └── commandExpiry.js            # expire PENDING > 5 menit
+│   ├── sockets/
+│   │   └── index.js                    # Socket.IO + auth + room per user
+│   ├── utils/
+│   │   ├── jwt.js
+│   │   ├── response.js                 # ok/created/fail helper
+│   │   ├── tokens.js                   # generateDeviceUid/Token
+│   │   └── validators.js
+│   ├── scripts/
+│   │   └── seedReadings.js             # seeder data testing
+│   ├── .env.example
+│   ├── server.js
+│   └── package.json
 │
 ├── esp32/
-│ └── monitoring_tanaman.ino # firmware WiFiManager
+│   └── monitoring_tanaman.ino          # firmware WiFiManager
 │
 ├── database/
-│ └── schema.sql # 6 tabel
+│   └── schema.sql                      # 6 tabel
 │
-├── docs/ # (opsional)
-│ └── DEPLOYMENT.md
+├── docs/                               # (opsional)
+│   └── DEPLOYMENT.md
 │
 ├── .gitignore
 ├── README.md
-└── PROJECT_CONTEXT.md # file ini
-
-text
-
----
+└── PROJECT_CONTEXT.md                  # konteks untuk AI
+```
 
 ## 4. DATABASE SCHEMA (6 TABEL)
 
