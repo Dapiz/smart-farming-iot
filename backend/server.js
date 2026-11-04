@@ -44,6 +44,10 @@ initSocket(httpServer);
 // ===== Cron: cek device offline tiap 20 detik =====
 setInterval(markStaleDevicesOffline, 20 * 1000);
 
+// ===== Cron: expire command PENDING > 5 menit tiap 30 detik =====
+const { expireStaleCommands } = require('./services/commandExpiry');
+setInterval(expireStaleCommands, 30 * 1000);
+
 const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
   console.log(`🚀 Backend berjalan di http://localhost:${PORT}`);
