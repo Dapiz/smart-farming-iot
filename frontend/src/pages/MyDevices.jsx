@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Cpu, Wifi, WifiOff, Droplets, Thermometer, RefreshCw, AlertCircle } from 'lucide-react';
+import { Plus, Cpu, Wifi, WifiOff, Droplets, Thermometer, RefreshCw, AlertCircle, ArrowRight } from 'lucide-react';
 import { deviceService } from '../services/deviceService';
 
 function DeviceCard({ device }) {
@@ -82,38 +82,40 @@ export default function MyDevices() {
   useEffect(() => { load(); }, []);
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
+    <div className="max-w-7xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-in">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">My Devices</h1>
-          <p className="text-sm text-gray-500">Kelola semua perangkat ESP32 Anda</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">My Devices</h1>
+          <p className="text-sm text-gray-500 mt-1">Kelola semua perangkat ESP32 Anda</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={load} className="btn-secondary flex items-center gap-2 text-sm">
+          <button onClick={load} className="btn-secondary text-sm">
             <RefreshCw className="w-4 h-4" /> Refresh
           </button>
-          <Link to="/devices/new" className="btn-primary flex items-center gap-2 text-sm">
+          <Link to="/devices/new" className="btn-primary text-sm">
             <Plus className="w-4 h-4" /> Tambah
           </Link>
         </div>
       </div>
 
       {error && (
-        <div className="bg-red-50 text-red-700 text-sm p-3 rounded-lg mb-4 flex items-start gap-2">
+        <div className="bg-red-50 text-red-700 text-sm p-3 rounded-xl border border-red-100 flex items-start gap-2">
           <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" /> {error}
         </div>
       )}
 
       {loading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[1,2,3].map(i => <div key={i} className="card h-40 animate-pulse bg-gray-100" />)}
+          {[1,2,3].map(i => <div key={i} className="card h-44 animate-pulse bg-gray-100" />)}
         </div>
       ) : devices.length === 0 ? (
-        <div className="card text-center py-12">
-          <Cpu className="w-12 h-12 text-gray-300 mx-auto" />
-          <h3 className="font-semibold text-gray-700 mt-3">Belum ada perangkat</h3>
-          <p className="text-sm text-gray-500 mt-1">Tambahkan perangkat ESP32 pertama Anda.</p>
-          <Link to="/devices/new" className="btn-primary inline-flex items-center gap-2 mt-4 text-sm">
+        <div className="card text-center py-16 animate-in">
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-primary-soft flex items-center justify-center mb-4">
+            <Cpu className="w-8 h-8 text-primary-600" />
+          </div>
+          <h3 className="font-semibold text-gray-900 text-lg">Belum ada perangkat</h3>
+          <p className="text-sm text-gray-500 mt-1 mb-5">Tambahkan perangkat ESP32 pertama Anda untuk mulai memantau.</p>
+          <Link to="/devices/new" className="btn-primary inline-flex text-sm">
             <Plus className="w-4 h-4" /> Tambah Perangkat
           </Link>
         </div>

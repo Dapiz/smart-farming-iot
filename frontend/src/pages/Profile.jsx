@@ -56,14 +56,14 @@ export default function Profile() {
       </div>
 
       {/* Info akun */}
-      <div className="card">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-lg">
+      <div className="card-gradient">
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center font-bold text-2xl text-white shadow-lg">
             {user?.name?.[0]?.toUpperCase() || 'U'}
           </div>
-          <div>
-            <div className="font-semibold text-gray-800">{user?.name}</div>
-            <div className="text-sm text-gray-500">{user?.email}</div>
+          <div className="min-w-0">
+            <div className="font-bold text-xl text-white truncate">{user?.name}</div>
+            <div className="text-sm text-primary-100 truncate">{user?.email}</div>
           </div>
         </div>
 

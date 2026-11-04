@@ -1,23 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html { font-family: 'Inter', system-ui, sans-serif; }
-  body { @apply bg-gray-50 text-gray-800 antialiased; }
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-gray-50 text-gray-800;
+    background-image:
+      radial-gradient(at 5% 5%, rgba(187, 247, 208, 0.3) 0%, transparent 40%),
+      radial-gradient(at 95% 95%, rgba(153, 246, 228, 0.25) 0%, transparent 40%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
 }
 
 @layer components {
+  /* ============ BUTTONS ============ */
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply relative inline-flex items-center justify-center gap-2
+           bg-gradient-to-r from-primary-600 to-accent-600
+           hover:from-primary-700 hover:to-accent-700
+           text-white font-semibold px-4 py-2.5 rounded-xl
+           shadow-soft hover:shadow-glow
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none
+           active:scale-[0.98];
   }
+
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-300 transition-colors;
+    @apply inline-flex items-center justify-center gap-2
+           bg-white hover:bg-gray-50
+           text-gray-700 font-medium px-4 py-2.5 rounded-xl
+           border border-gray-200 hover:border-primary-300
+           shadow-soft
+           transition-all duration-200
+           active:scale-[0.98];
   }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           text-gray-600 hover:text-primary-700 hover:bg-primary-50
+           font-medium px-3 py-2 rounded-lg
+           transition-colors duration-200;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2
+           bg-red-50 hover:bg-red-100 text-red-700
+           font-medium px-3 py-2 rounded-lg
+           transition-colors duration-200;
+  }
+
+  /* ============ INPUTS ============ */
   .input-field {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+    @apply w-full px-4 py-2.5
+           border border-gray-200 rounded-xl
+           bg-white
+           text-gray-800 placeholder:text-gray-400
+           focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500
+           transition-all duration-150;
   }
+
+  /* ============ CARDS ============ */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-5;
+    @apply bg-white rounded-2xl
+           shadow-card
+           border border-gray-100
+           p-5
+           transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-soft hover:border-primary-100 hover:-translate-y-0.5;
+  }
+
+  .card-gradient {
+    @apply rounded-2xl p-5 border border-white/20
+           shadow-soft
+           bg-gradient-to-br from-primary-600 to-accent-600
+           text-white;
+  }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl
+           text-sm font-medium
+           text-primary-100/80 hover:text-white hover:bg-white/10
+           transition-all duration-150;
+  }
+
+  .sidebar-link-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl
+           text-sm font-semibold
+           text-primary-800 bg-white shadow-soft
+           transition-all duration-150;
+  }
+
+  /* ============ BADGES ============ */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-success { @apply badge bg-green-50 text-green-700 ring-1 ring-green-200; }
+  .badge-danger  { @apply badge bg-red-50 text-red-700 ring-1 ring-red-200; }
+  .badge-warning { @apply badge bg-yellow-50 text-yellow-700 ring-1 ring-yellow-200; }
+  .badge-info    { @apply badge bg-blue-50 text-blue-700 ring-1 ring-blue-200; }
+  .badge-gray    { @apply badge bg-gray-100 text-gray-600 ring-1 ring-gray-200; }
+
+  /* ============ ANIMATIONS ============ */
+  .animate-in {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  /* ============ SCROLLBAR ============ */
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 }

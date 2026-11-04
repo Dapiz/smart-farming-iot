@@ -47,8 +47,16 @@ export default function SensorChart({ title, labels, datasets, yLabel, unit = ''
   };
 
   return (
-    <div className="card">
-      <div className="h-64">
+    <div className="card animate-in">
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="font-semibold text-gray-900 text-sm">{title}</h3>
+        <div className="flex items-center gap-1">
+          {datasets.map((d, i) => (
+            <span key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: d.borderColor }} />
+          ))}
+        </div>
+      </div>
+      <div className="h-56 md:h-64">
         <Line data={data} options={options} />
       </div>
     </div>
